@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Bridge - Viewer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Define the gradient animation */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            /* Define a multi-color gradient */
+            background: linear-gradient(-45deg, #111827, #1f2937, #374151, #4b5563);
+            /* Make the background large so the animation is smooth */
+            background-size: 400% 400%;
+            /* Apply the animation */
+            animation: gradientAnimation 15s ease infinite; /* 15 seconds duration, smooth transition, loops forever */
+        }
+        .video-container {
+            border: 2px solid #3b82f6; /* Blue border */
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+
+    <h1 class="text-3xl font-bold text-white mb-6 text-center">Sign Bridge</h1>
+
+    <!-- Video Feed Container -->
+    <div class="w-full max-w-2xl">
+        <div class="w-full aspect-video bg-black rounded-lg overflow-hidden video-container">
+            <!-- The img src points to the video feed route in app.py -->
+            <img src="{{ url_for('video_feed') }}" class="w-full h-full object-cover" alt="Sign Language Video Feed">
+        </div>
+        <p class="text-gray-400 mt-4 text-center text-sm">Live feed from the camera with sign detection.</p>
+    </div>
+
+    <!-- Optional: Link back to the main page (if you re-enable index.html later) -->
+    <!--
+    <div class="mt-8">
+        <a href="{{ url_for('index') }}" class="text-blue-400 hover:text-blue-300">&larr; Back to Login Page</a>
+    </div>
+    -->
+
+</body>
+</html>
